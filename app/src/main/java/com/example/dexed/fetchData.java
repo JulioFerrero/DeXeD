@@ -124,6 +124,7 @@ public class fetchData extends AsyncTask<Void, Void, Void> {
                     strType2 = type2.getString("name");
                     String strimgtype2 = "https://raw.githubusercontent.com/msikma/pokesprite/master/misc/types/gen8/"+strType2+".png";
                     Glide.with(context).load(strimgtype2).apply(new RequestOptions().override(80, 80)).into(MainActivity.imgType2);
+                    MainActivity.imgType2.setVisibility(View.VISIBLE);
                 }
             }
 
