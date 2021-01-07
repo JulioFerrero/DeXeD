@@ -95,6 +95,7 @@ public class fetchData extends AsyncTask<Void, Void, Void> {
     protected void onPostExecute(Void aVoid){
         JSONObject jObject = null;
         String img = "";
+        String icon = "";
         String typeName = "";
         String typeObj="";
 
@@ -140,6 +141,11 @@ public class fetchData extends AsyncTask<Void, Void, Void> {
 
             img = animated.getString("front_default");
 
+            JSONObject generation1 = new JSONObject(versions.getString("generation-viii"));
+            JSONObject icons = new JSONObject(generation1.getString("icons"));
+
+            icon = icons.getString("front_default");
+
 
             //img  = dream_world.getString("front_default");
 
@@ -159,6 +165,7 @@ public class fetchData extends AsyncTask<Void, Void, Void> {
         MainActivity.getID = this.id;
         //Picasso.get().load(img).resize(288,288).into(MainActivity.imgPok);
         Glide.with(context).load(img).transition(withCrossFade()).into(MainActivity.imgPok);
+        Glide.with(context).load(icon).transition(withCrossFade()).into(MainActivity.icon);
         Log.d("TAG", this.name);
         Log.d("TAG", this.height);
         Log.d("TAG", this.weight);

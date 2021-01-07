@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static TextView txtName,txtHeight,txtWeight,txtID,txtType,txtDesc;
     public static Activity act;
-    public static ImageView imgPok,imgType1,imgType2;
+    public static ImageView imgPok,imgType1,imgType2,icon;
     public static String getID;
     public static ImageButton btnUp,btnDown,btnSearch;
     public static int nextPok = 1;
@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         btnUp = findViewById(R.id.btnUp);
         btnDown = findViewById(R.id.btnDown);
         btnSearch = findViewById(R.id.btnSearch);
+        icon = findViewById(R.id.icon);
         Typeface face= Typeface.createFromAsset(getAssets(), "fonts/Pokemon.ttf");
 
         //String imageUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/432.gif";

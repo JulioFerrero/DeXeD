@@ -103,11 +103,12 @@
 
             <com.example.dexed.NastyFontTextView
                 android:id="@+id/txtExtra"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="14dp"
-                android:text="TextView"
+                android:gravity="center_horizontal"
+                android:text="Hostile Pókemon"
                 android:textColor="@android:color/secondary_text_light"
                 android:textSize="20dp"
                 app:fontFile="Pokemon.ttf" />
@@ -221,5 +222,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/search" />
+
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="72dp"
+        app:layout_constraintStart_toEndOf="@+id/sprite"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/icon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
