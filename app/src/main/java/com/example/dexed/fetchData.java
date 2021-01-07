@@ -7,6 +7,8 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.view.View;
+
 import com.ahmadrosid.svgloader.SvgLoader;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -24,6 +26,8 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+
+import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
 public class fetchData extends AsyncTask<Void, Void, Void> {
 
@@ -113,6 +117,9 @@ public class fetchData extends AsyncTask<Void, Void, Void> {
                     String strimgtype1 = "https://raw.githubusercontent.com/msikma/pokesprite/master/misc/types/gen8/"+strType1+".png";
                     Glide.with(context).load(strimgtype1).apply(new RequestOptions().override(80, 80)).into(MainActivity.imgType1);
                 }
+
+                MainActivity.imgType2.setVisibility(View.INVISIBLE);
+
                 if (i == 1){
                     strType2 = type2.getString("name");
                     String strimgtype2 = "https://raw.githubusercontent.com/msikma/pokesprite/master/misc/types/gen8/"+strType2+".png";
@@ -150,7 +157,7 @@ public class fetchData extends AsyncTask<Void, Void, Void> {
         MainActivity.txtID.setText(this.id);
         MainActivity.getID = this.id;
         //Picasso.get().load(img).resize(288,288).into(MainActivity.imgPok);
-        Glide.with(context).load(img).apply(new RequestOptions().override(280, 280)).into(MainActivity.imgPok);
+        Glide.with(context).load(img).transition(withCrossFade()).into(MainActivity.imgPok);
         Log.d("TAG", this.name);
         Log.d("TAG", this.height);
         Log.d("TAG", this.weight);

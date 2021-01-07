@@ -101,6 +101,7 @@ public class fetchData1 extends AsyncTask<Void, Void, Void> {
         }
         // Set info
         MainActivity.txtDesc.setText(this.Desc);
+        MainActivity.nextPok = Integer.parseInt(StringID);
 
     }
 }
