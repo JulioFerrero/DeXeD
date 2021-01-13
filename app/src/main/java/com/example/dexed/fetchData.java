@@ -2,17 +2,12 @@ package com.example.dexed;
 
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.view.View;
 
-import com.ahmadrosid.svgloader.SvgLoader;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -23,9 +18,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
 
 import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
@@ -55,20 +48,16 @@ public class fetchData extends AsyncTask<Void, Void, Void> {
     protected Void doInBackground(Void... voids) {
         try {
             //Make API connection
+
             URL urlPokemon = new URL("https://pokeapi.co/api/v2/pokemon/" + pokSearch);
             Log.i("logtest", "https://pokeapi.co/api/v2/pokemon/" + pokSearch);
 
-
-
             HttpURLConnection httpURLConnection = (HttpURLConnection) urlPokemon.openConnection();
-
 
             // Read API results
             InputStream inputStream = httpURLConnection.getInputStream();
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
             StringBuilder sBuilder = new StringBuilder();
-
-
 
             // Build JSON String
             String line = null;
@@ -76,13 +65,9 @@ public class fetchData extends AsyncTask<Void, Void, Void> {
                 sBuilder.append(line + "\n");
             }
 
-
-
             inputStream.close();
 
-
             data = sBuilder.toString();
-
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -92,13 +77,14 @@ public class fetchData extends AsyncTask<Void, Void, Void> {
     }
 
     @Override
-    protected void onPostExecute(Void aVoid){
+    protected void onPostExecute(Void aVoid) {
         JSONObject jObject = null;
         String img = "";
         String icon = "";
         String typeName = "";
-        String typeObj="";
+        String typeObj = "";
 
+        int simpleID = 0;
         try {
             jObject = new JSONObject(data);
 
@@ -107,23 +93,24 @@ public class fetchData extends AsyncTask<Void, Void, Void> {
             height += "Height: " + jObject.getString("height");
             weight += "Weight: " + jObject.getString("weight");
             id += "ID:" + jObject.getString("id");
-            String simpleID = jObject.getString("id");
+            simpleID = jObject.getInt("id");
+
             // Get type/types
             JSONArray types = new JSONArray(jObject.getString("types"));
-            for(int i=0; i<types.length(); i++){
+            for (int i = 0; i < types.length(); i++) {
                 JSONObject type = new JSONObject(types.getString(i));
-                JSONObject type2  = new JSONObject(type.getString("type"));
+                JSONObject type2 = new JSONObject(type.getString("type"));
                 if (i == 0) {
                     strType1 = type2.getString("name");
-                    String strimgtype1 = "https://raw.githubusercontent.com/msikma/pokesprite/master/misc/types/gen8/"+strType1+".png";
+                    String strimgtype1 = "https://raw.githubusercontent.com/msikma/pokesprite/master/misc/types/gen8/" + strType1 + ".png";
                     Glide.with(context).load(strimgtype1).apply(new RequestOptions().override(80, 80)).into(MainActivity.imgType1);
                 }
 
                 MainActivity.imgType2.setVisibility(View.INVISIBLE);
 
-                if (i == 1){
+                if (i == 1) {
                     strType2 = type2.getString("name");
-                    String strimgtype2 = "https://raw.githubusercontent.com/msikma/pokesprite/master/misc/types/gen8/"+strType2+".png";
+                    String strimgtype2 = "https://raw.githubusercontent.com/msikma/pokesprite/master/misc/types/gen8/" + strType2 + ".png";
                     Glide.with(context).load(strimgtype2).apply(new RequestOptions().override(80, 80)).into(MainActivity.imgType2);
                     MainActivity.imgType2.setVisibility(View.VISIBLE);
                 }
@@ -153,7 +140,8 @@ public class fetchData extends AsyncTask<Void, Void, Void> {
             e.printStackTrace();
         }
 
-        fetchData1 process1 = new fetchData1(this.id,context);
+
+        fetchData1 process1 = new fetchData1(simpleID, context);
         process1.execute();
 
 

@@ -61,8 +61,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 nextPok++;
-                fetchData process = new fetchData(String.valueOf(nextPok),getApplicationContext());
-                process.execute();
+                if (nextPok < 650) {
+                    fetchData process = new fetchData(String.valueOf(nextPok), getApplicationContext());
+                    process.execute();
+                }
+                nextPok--;
             }
         });
 
@@ -70,8 +73,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 nextPok--;
-                fetchData process = new fetchData(String.valueOf(nextPok),getApplicationContext());
-                process.execute();
+                if (nextPok > 0) {
+                    fetchData process = new fetchData(String.valueOf(nextPok), getApplicationContext());
+                    process.execute();
+                }
+                nextPok = 1;
             }
         });
 
@@ -105,6 +111,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         alert.show();
+    }
+
+    public void showTypes(){
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        alert.setTitle("Select Type");
+
+        //alert.setItems()
     }
 
 }

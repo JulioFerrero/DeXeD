@@ -25,13 +25,12 @@ public class fetchData1 extends AsyncTask<Void, Void, Void> {
     protected String Desc = "";
     protected String strTypes; // Create an ArrayList object
     protected String strLanguage = "";
-    protected String StringID = "";
+    protected int StringID = 1;
     protected String data1;
     protected Context context;
 
-    public fetchData1(String StringID, Context context) {
-        String[] arrOfStr = StringID.split(":");
-        this.StringID = arrOfStr[1];
+    public fetchData1(int StringID, Context context) {
+        this.StringID = StringID;
         strTypes = "";
         this.context =context;
 
@@ -101,7 +100,7 @@ public class fetchData1 extends AsyncTask<Void, Void, Void> {
         }
         // Set info
         MainActivity.txtDesc.setText(this.Desc);
-        MainActivity.nextPok = Integer.parseInt(StringID);
+        MainActivity.nextPok = StringID;
 
     }
 }

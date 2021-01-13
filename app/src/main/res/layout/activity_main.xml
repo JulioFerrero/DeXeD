@@ -8,67 +8,50 @@
     tools:context=".MainActivity"
     tools:visibility="visible">
 
-    <Space
-        android:id="@+id/space"
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/background_sliding" />
+
+    <ImageView
+        android:id="@+id/imageView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/pokedexentry" />
 
-    <FrameLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_marginTop="-40dp"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/background_sliding"
-            tools:srcCompat="@drawable/background_sliding" />
-
-        <ImageView
-            android:id="@+id/imageView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/pokedexentry"
-            tools:srcCompat="@drawable/pokedexentry" />
-
-        <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/pokedexblank" />
-
-    </FrameLayout>
-
-    <FrameLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
-
-    </FrameLayout>
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/pokedexblank" />
 
     <ImageView
         android:id="@+id/sprite"
         android:layout_width="280px"
         android:layout_height="280px"
         android:layout_marginStart="35dp"
-        android:layout_marginTop="22dp"
+        android:layout_marginBottom="216dp"
         android:src="@drawable/test"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/space" />
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        tools:ignore="PxUsage" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="174dp"
-        android:layout_height="145dp"
-        android:layout_marginStart="220dp"
-        android:layout_marginTop="22dp"
+        android:layout_width="@dimen/_135sdp"
+        android:layout_height="@dimen/_115sdp"
+        android:layout_marginBottom="175dp"
         android:orientation="vertical"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/icon">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -178,9 +161,9 @@
     <com.example.dexed.NastyFontTextView
         android:id="@+id/txtDesc"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="195dp"
+        android:layout_marginTop="@dimen/_50sdp"
         android:layout_marginEnd="16dp"
         android:gravity="center_horizontal"
         android:text="TextView"
@@ -189,48 +172,48 @@
         app:fontFile="Pokemon.ttf"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/sprite" />
 
     <ImageButton
         android:id="@+id/btnUp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="265dp"
+        android:layout_width="49dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="@dimen/_103sdp"
         android:background="#00FFFFFF"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/sprite"
         app:srcCompat="@drawable/up" />
 
     <ImageButton
         android:id="@+id/btnDown"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="49dp"
+        android:layout_height="47dp"
         android:layout_marginStart="52dp"
-        android:layout_marginTop="265dp"
+        android:layout_marginTop="@dimen/_103sdp"
         android:background="#00FFFFFF"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/sprite"
         app:srcCompat="@drawable/down" />
 
     <ImageButton
         android:id="@+id/btnSearch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="49dp"
+        android:layout_height="47dp"
         android:layout_marginStart="105dp"
-        android:layout_marginTop="265dp"
+        android:layout_marginTop="@dimen/_103sdp"
         android:background="#00FFFFFF"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/sprite"
         app:srcCompat="@drawable/search" />
 
     <ImageView
         android:id="@+id/icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="72dp"
+        android:layout_width="144px"
+        android:layout_height="144px"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="215dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintStart_toEndOf="@+id/sprite"
-        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/icon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
