@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">deXed</string>
+    <string name="fondo">fondo</string>
+    <string name="sprite">Big sprite pokemon</string>
+    <string name="id">ID</string>
+    <string name="name">Name</string>
+    <string name="hostile">Hostile Pókemon</string>
+    <string name="type1">type1</string>
+    <string name="type2">type2</string>
+    <string name="height">Height</string>
+    <string name="weight">Weight</string>
+    <string name="desc">desc</string>
+    <string name="up_arrow">up arrow</string>
+    <string name="down_arrow">down arrow</string>
+    <string name="search_button">search button</string>
+    <string name="type_filter">type filter</string>
+    <string name="little_icon">little icon</string>
 </resources>

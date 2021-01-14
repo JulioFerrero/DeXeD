@@ -15,7 +15,8 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/background_sliding" />
+        app:srcCompat="@drawable/background_sliding"
+        android:contentDescription="@string/fondo" />
 
     <ImageView
         android:id="@+id/imageView1"
@@ -23,7 +24,8 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/pokedexentry" />
+        app:srcCompat="@drawable/pokedexentry"
+        android:contentDescription="@string/fondo" />
 
     <ImageView
         android:id="@+id/imageView4"
@@ -31,7 +33,8 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/pokedexblank" />
+        app:srcCompat="@drawable/pokedexblank"
+        android:contentDescription="@string/fondo"/>
 
     <ImageView
         android:id="@+id/sprite"
@@ -42,7 +45,8 @@
         android:src="@drawable/test"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintStart_toStartOf="@+id/imageView"
-        tools:ignore="PxUsage" />
+        tools:ignore="PxUsage"
+        android:contentDescription="@string/sprite" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -62,21 +66,23 @@
                 android:id="@+id/txtID"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TextView"
+                android:text="@string/id"
                 android:textColor="@android:color/secondary_text_light"
                 android:textSize="20dp"
                 android:textStyle="bold"
-                app:fontFile="Pokemon.ttf" />
+                app:fontFile="Pokemon.ttf"
+                tools:ignore="SpUsage" />
 
             <com.example.dexed.NastyFontTextView
                 android:id="@+id/txtName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="right"
-                android:text="TextView"
+                android:gravity="end"
+                android:text="@string/name"
                 android:textColor="@android:color/secondary_text_light"
                 android:textSize="20dp"
-                app:fontFile="Pokemon.ttf" />
+                app:fontFile="Pokemon.ttf"
+                tools:ignore="SpUsage" />
         </LinearLayout>
 
         <LinearLayout
@@ -91,10 +97,11 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="14dp"
                 android:gravity="center_horizontal"
-                android:text="Hostile Pókemon"
+                android:text="@string/hostile"
                 android:textColor="@android:color/secondary_text_light"
                 android:textSize="20dp"
-                app:fontFile="Pokemon.ttf" />
+                app:fontFile="Pokemon.ttf"
+                tools:ignore="SpUsage" />
         </LinearLayout>
 
         <LinearLayout
@@ -108,7 +115,9 @@
                 android:layout_height="80px"
                 android:layout_gravity="center_horizontal"
                 android:layout_weight="1"
-                tools:srcCompat="@tools:sample/avatars" />
+                tools:srcCompat="@tools:sample/avatars"
+                tools:ignore="PxUsage"
+                android:contentDescription="@string/type1" />
 
             <ImageView
                 android:id="@+id/imageView3"
@@ -117,7 +126,9 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_weight="1"
                 android:visibility="visible"
-                tools:srcCompat="@tools:sample/avatars" />
+                tools:srcCompat="@tools:sample/avatars"
+                tools:ignore="PxUsage"
+                android:contentDescription="@string/type2" />
 
         </LinearLayout>
 
@@ -132,11 +143,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
-                android:gravity="right"
-                android:text="TextView"
+                android:gravity="end"
+                android:text="@string/height"
                 android:textColor="@android:color/secondary_text_light"
                 android:textSize="20dp"
-                app:fontFile="Pokemon.ttf" />
+                app:fontFile="Pokemon.ttf"
+                tools:ignore="SpUsage" />
         </LinearLayout>
 
         <LinearLayout
@@ -149,11 +161,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:gravity="right"
-                android:text="TextView"
+                android:gravity="end"
+                android:text="@string/weight"
                 android:textColor="@android:color/secondary_text_light"
                 android:textSize="20dp"
-                app:fontFile="Pokemon.ttf" />
+                app:fontFile="Pokemon.ttf"
+                tools:ignore="SpUsage" />
         </LinearLayout>
 
     </LinearLayout>
@@ -166,13 +179,14 @@
         android:layout_marginTop="@dimen/_50sdp"
         android:layout_marginEnd="16dp"
         android:gravity="center_horizontal"
-        android:text="TextView"
+        android:text="@string/desc"
         android:textColor="@android:color/secondary_text_dark"
         android:textSize="20dp"
         app:fontFile="Pokemon.ttf"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sprite" />
+        app:layout_constraintTop_toBottomOf="@+id/sprite"
+        tools:ignore="SpUsage" />
 
     <ImageButton
         android:id="@+id/btnUp"
@@ -182,7 +196,8 @@
         android:background="#00FFFFFF"
         app:layout_constraintStart_toStartOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/sprite"
-        app:srcCompat="@drawable/up" />
+        app:srcCompat="@drawable/up"
+        android:contentDescription="@string/up_arrow" />
 
     <ImageButton
         android:id="@+id/btnDown"
@@ -193,7 +208,8 @@
         android:background="#00FFFFFF"
         app:layout_constraintStart_toStartOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/sprite"
-        app:srcCompat="@drawable/down" />
+        app:srcCompat="@drawable/down"
+        android:contentDescription="@string/down_arrow" />
 
     <ImageButton
         android:id="@+id/btnSearch"
@@ -204,7 +220,20 @@
         android:background="#00FFFFFF"
         app:layout_constraintStart_toStartOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/sprite"
-        app:srcCompat="@drawable/search" />
+        app:srcCompat="@drawable/search"
+        android:contentDescription="@string/search_button" />
+
+    <ImageButton
+        android:id="@+id/btnType"
+        android:layout_width="49dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="155dp"
+        android:layout_marginTop="@dimen/_103sdp"
+        android:background="#00FFFFFF"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/sprite"
+        app:srcCompat="@drawable/type"
+        android:contentDescription="@string/type_filter" />
 
     <ImageView
         android:id="@+id/icon"
@@ -214,6 +243,8 @@
         android:layout_marginBottom="215dp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintStart_toEndOf="@+id/sprite"
-        app:srcCompat="@drawable/icon" />
+        app:srcCompat="@drawable/icon"
+        android:contentDescription="@string/little_icon"
+        tools:ignore="PxUsage" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

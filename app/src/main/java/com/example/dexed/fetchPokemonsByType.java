@@ -4,6 +4,7 @@ package com.example.dexed;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -15,30 +16,28 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Arrays;
 
-public class fetchData1 extends AsyncTask<Void, Void, Void> {
+public class fetchPokemonsByType extends AsyncTask<Void, Void, Void> {
 
-    protected String Desc = "";
     protected String strTypes; // Create an ArrayList object
-    protected String strLanguage = "";
-    protected int StringID;
     protected String data1;
+    protected String typePok;
+    protected String[] arraypok;
     @SuppressLint("StaticFieldLeak")
     protected Context context;
 
-    public fetchData1(int StringID, Context context) {
-        this.StringID = StringID;
-        strTypes = "";
+    public fetchPokemonsByType(String typePok, Context context) {
+        this.typePok = typePok;
         this.context =context;
-
+        Log.d("TAG", typePok);
     }
-
 
     @Override
     protected Void doInBackground(Void... voids) {
         try {
             //Make API connection
-            URL url = new URL("https://pokeapi.co/api/v2/pokemon-species/"+ StringID + "/");
+            URL url = new URL("https://pokeapi.co/api/v2/type/" + typePok + "/");
             HttpURLConnection httpURLConnection1;
             httpURLConnection1 = (HttpURLConnection) url.openConnection();
 
@@ -47,7 +46,7 @@ public class fetchData1 extends AsyncTask<Void, Void, Void> {
             StringBuilder sBuilder1 = new StringBuilder();
             String line1;
             while ((line1 = bufferedReader1.readLine()) != null){
-                sBuilder1.append(line1 + "\n");
+                sBuilder1.append(line1).append("\n");
             }
             inputStream1.close();
             data1 = sBuilder1.toString();
@@ -65,21 +64,15 @@ public class fetchData1 extends AsyncTask<Void, Void, Void> {
         try {
             jObject = new JSONObject(data1);
 
-            JSONArray flavor_text_entries = new JSONArray(jObject.getString("flavor_text_entries"));
+            JSONArray arrayTypesJSON = new JSONArray(jObject.getString("pokemon"));
 
-            for(int i=0; i<flavor_text_entries.length(); i++){
-                JSONObject type = new JSONObject(flavor_text_entries.getString(i));
-                JSONObject type2  = new JSONObject(type.getString("version"));
+            arraypok = new String[arrayTypesJSON.length()];
 
-                JSONObject type3  = new JSONObject(type.getString("language"));
-                strLanguage = type3.getString("name");
-
+            for(int i=0; i<arrayTypesJSON.length(); i++){
+                JSONObject type = new JSONObject(arrayTypesJSON.getString(i));
+                JSONObject type2 = new JSONObject(type.getString("pokemon"));
                 strTypes = type2.getString("name");
-                if (strTypes .equals("black") && strLanguage .equals("en")){
-                    JSONObject get0 = new JSONObject(flavor_text_entries.getString(i));
-                    Desc += get0.getString("flavor_text");
-                    break;
-                }
+                this.arraypok[i]=strTypes;
             }
 
 
@@ -87,14 +80,15 @@ public class fetchData1 extends AsyncTask<Void, Void, Void> {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        if (MainActivity.array == null) {
-            fetchTypes process2 = new fetchTypes();
-            process2.execute();
-        }
-
-
         // Set info
-        MainActivity.txtDesc.setText(this.Desc);
+
+        Log.d("TAG", Arrays.toString(arraypok));
+        Log.d("TAG", String.valueOf(arraypok.length));
+        MainActivity.arrayPok = arraypok;
+
+        fetchData process = new fetchData(arraypok[0], context);
+        process.execute();
+
 
     }
 }

@@ -1,6 +1,7 @@
 package com.example.dexed;
 
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -29,10 +30,11 @@ public class fetchData extends AsyncTask<Void, Void, Void> {
     protected String height = "";
     protected String weight = "";
     protected String id = "";
-    protected String Desc = "";
+    protected int simpleID = 0;
     protected String strType1;// Create an ArrayList object
     protected String strType2;
     protected String pokSearch;
+    @SuppressLint("StaticFieldLeak")
     protected Context context;
 
     public fetchData(String pokSearch, Context context) {
@@ -40,9 +42,7 @@ public class fetchData extends AsyncTask<Void, Void, Void> {
         strType1 = "";
         strType2 = "";
         this.context =context;
-
     }
-
 
     @Override
     protected Void doInBackground(Void... voids) {
@@ -60,31 +60,26 @@ public class fetchData extends AsyncTask<Void, Void, Void> {
             StringBuilder sBuilder = new StringBuilder();
 
             // Build JSON String
-            String line = null;
+            String line;
             while ((line = bufferedReader.readLine()) != null) {
-                sBuilder.append(line + "\n");
+                sBuilder.append(line).append("\n");
             }
-
             inputStream.close();
-
             data = sBuilder.toString();
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         return null;
     }
 
     @Override
     protected void onPostExecute(Void aVoid) {
-        JSONObject jObject = null;
+        JSONObject jObject;
         String img = "";
         String icon = "";
-        String typeName = "";
-        String typeObj = "";
 
-        int simpleID = 0;
+
         try {
             jObject = new JSONObject(data);
 
@@ -134,16 +129,12 @@ public class fetchData extends AsyncTask<Void, Void, Void> {
             icon = icons.getString("front_default");
 
 
-            //img  = dream_world.getString("front_default");
-
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-
         fetchData1 process1 = new fetchData1(simpleID, context);
         process1.execute();
-
 
         // Set info
         MainActivity.txtName.setText(this.name);
@@ -151,7 +142,7 @@ public class fetchData extends AsyncTask<Void, Void, Void> {
         MainActivity.txtWeight.setText(this.weight);
         MainActivity.txtID.setText(this.id);
         MainActivity.getID = this.id;
-        //Picasso.get().load(img).resize(288,288).into(MainActivity.imgPok);
+        MainActivity.simpleID = this.simpleID;
         Glide.with(context).load(img).transition(withCrossFade()).into(MainActivity.imgPok);
         Glide.with(context).load(icon).transition(withCrossFade()).into(MainActivity.icon);
         Log.d("TAG", this.name);
