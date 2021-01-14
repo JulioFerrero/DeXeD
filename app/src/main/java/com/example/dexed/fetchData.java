@@ -115,13 +115,21 @@ public class fetchData extends AsyncTask<Void, Void, Void> {
             Log.d("TAG", strType2);
 
             // Get img SVG
+
             JSONObject sprites = new JSONObject(jObject.getString("sprites"));
             JSONObject versions = new JSONObject(sprites.getString("versions"));
-            JSONObject generation = new JSONObject(versions.getString("generation-v"));
-            JSONObject blackWhite = new JSONObject(generation.getString("black-white"));
-            JSONObject animated = new JSONObject(blackWhite.getString("animated"));
 
-            img = animated.getString("front_default");
+            if (simpleID > 649){
+                img = sprites.getString("front_default");
+            } else {
+
+                JSONObject generation = new JSONObject(versions.getString("generation-v"));
+                JSONObject blackWhite = new JSONObject(generation.getString("black-white"));
+                JSONObject animated = new JSONObject(blackWhite.getString("animated"));
+
+                img = animated.getString("front_default");
+
+            }
 
             JSONObject generation1 = new JSONObject(versions.getString("generation-viii"));
             JSONObject icons = new JSONObject(generation1.getString("icons"));

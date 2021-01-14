@@ -4,6 +4,7 @@ package com.example.dexed;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -75,6 +76,16 @@ public class fetchData1 extends AsyncTask<Void, Void, Void> {
                 strLanguage = type3.getString("name");
 
                 strTypes = type2.getString("name");
+
+                if (StringID > 649){
+                    if (strTypes .equals("alpha-sapphire") && strLanguage .equals("en")){
+                        JSONObject get0 = new JSONObject(flavor_text_entries.getString(i));
+                        Desc += get0.getString("flavor_text");
+                        Log.d("TAG", Desc);
+                        break;
+                    }
+                }
+
                 if (strTypes .equals("black") && strLanguage .equals("en")){
                     JSONObject get0 = new JSONObject(flavor_text_entries.getString(i));
                     Desc += get0.getString("flavor_text");

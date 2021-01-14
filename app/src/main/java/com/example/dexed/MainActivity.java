@@ -52,19 +52,14 @@ public class MainActivity extends AppCompatActivity {
 
                 if (filterType){
                     nextPok++;
-                    if (nextPok < 650) {
                         fetchData process = new fetchData(arrayPok[nextPok], getApplicationContext());
                         process.execute();
-                    }
                 }else{
                         nextPok = simpleID;
                         nextPok++;
-                        if (nextPok < 650) {
                             fetchData process = new fetchData(String.valueOf(nextPok), getApplicationContext());
                             process.execute();
-                        }
-
-                    }
+                }
             }
         });
 
